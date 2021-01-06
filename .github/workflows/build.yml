@@ -33,3 +33,9 @@ jobs:
 
     - name: Pack PolicyScope.Mock
       run: dotnet pack ./src/PolicyScope/Pekspro.PolicyScope.Mock/Pekspro.PolicyScope.Mock.csproj --verbosity normal
+    
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: NuGet-packages
+        path: ./**/*.nuget
