@@ -38,6 +38,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: NuGet-packages
-        path: ./**/*.nupkg
-        path: ./**/*.snupkg
+        path: |
+          ./**/*.nupkg
+          ./**/*.snupkg
 
