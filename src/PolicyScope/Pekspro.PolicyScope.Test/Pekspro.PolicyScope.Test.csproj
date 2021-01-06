@@ -4,6 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <Configurations>Debug;Release;DebugLocalLinking</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,8 +25,16 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Pekspro.PolicyScope.LogicTest\Pekspro.PolicyScope.LogicTest.csproj" />
-    <ProjectReference Include="..\Pekspro.PolicyScope.Mock\Pekspro.PolicyScope.Mock.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(Configuration)' == 'DebugLocalLinking' ">
     <ProjectReference Include="..\Pekspro.PolicyScope\Pekspro.PolicyScope.csproj" />
+    <ProjectReference Include="..\Pekspro.PolicyScope.Mock\Pekspro.PolicyScope.Mock.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(Configuration)' != 'DebugLocalLinking' ">
+    <PackageReference Include="Pekspro.PolicyScope" Version="0.0.2" />
+    <PackageReference Include="Pekspro.PolicyScope.Mock" Version="0.0.2" />
   </ItemGroup>
 
 </Project>

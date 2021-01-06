@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-
     <IsPackable>false</IsPackable>
+    <Configurations>Debug;Release;DebugLocalLinking</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,9 +22,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\PolicyScope\Pekspro.PolicyScope.Mock\Pekspro.PolicyScope.Mock.csproj" />
-    <ProjectReference Include="..\..\PolicyScope\Pekspro.PolicyScope\Pekspro.PolicyScope.csproj" />
     <ProjectReference Include="..\Sample\Sample.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(Configuration)' == 'DebugLocalLinking' ">
+    <ProjectReference Include="..\..\PolicyScope\Pekspro.PolicyScope\Pekspro.PolicyScope.csproj" />
+    <ProjectReference Include="..\..\PolicyScope\Pekspro.PolicyScope.Mock\Pekspro.PolicyScope.Mock.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(Configuration)' != 'DebugLocalLinking' ">
+    <PackageReference Include="Pekspro.PolicyScope" Version="0.0.2" />
+    <PackageReference Include="Pekspro.PolicyScope.Mock" Version="0.0.2" />
   </ItemGroup>
 
 </Project>
