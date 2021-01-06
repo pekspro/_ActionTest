@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+    <LangVersion>8.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <Authors>PEK</Authors>
+    <Company>PEK's Productions</Company>
+    <Version>0.0.2</Version>
+    <Description>This library makes it easy to write unit test with Pekspro.PolicyScope.</Description>
+    <PackageProjectUrl>https://github.com/pekspro/PolicyScope</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/pekspro/PolicyScope</RepositoryUrl>
+    <PackageTags>Polly</PackageTags>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <!--<ItemGroup>
+    <ProjectReference Include="..\Pekspro.PolicyScope\Pekspro.PolicyScope.csproj" />
+  </ItemGroup>-->
+
+  <ItemGroup>
+    <PackageReference Include="Pekspro.PolicyScope" Version="0.0.2" />
+  </ItemGroup>
+  
+  <!-- Source link enable start -->
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+  <!-- Source link enable end -->
+
+</Project>

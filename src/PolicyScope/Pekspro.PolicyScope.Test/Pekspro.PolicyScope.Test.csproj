@@ -22,9 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\PolicyScope\Pekspro.PolicyScope.Mock\Pekspro.PolicyScope.Mock.csproj" />
-    <ProjectReference Include="..\..\PolicyScope\Pekspro.PolicyScope\Pekspro.PolicyScope.csproj" />
-    <ProjectReference Include="..\Sample\Sample.csproj" />
+    <ProjectReference Include="..\Pekspro.PolicyScope.LogicTest\Pekspro.PolicyScope.LogicTest.csproj" />
+    <ProjectReference Include="..\Pekspro.PolicyScope.Mock\Pekspro.PolicyScope.Mock.csproj" />
+    <ProjectReference Include="..\Pekspro.PolicyScope\Pekspro.PolicyScope.csproj" />
   </ItemGroup>
 
 </Project>
