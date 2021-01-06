@@ -29,7 +29,7 @@ jobs:
       run: dotnet test ./src/ --no-build --verbosity normal
 
     - name: Pack PolicyScope
-      run: dotnet pack ../src/PolicyScope/Pekspro.PolicyScope/Pekspro.PolicyScope.csproj --verbosity normal
+      run: dotnet pack ./src/PolicyScope/Pekspro.PolicyScope/Pekspro.PolicyScope.csproj --verbosity normal
 
     - name: Pack PolicyScope.Mock
-      run: dotnet pack ../src/PolicyScope/Pekspro.PolicyScope.Mock/Pekspro.PolicyScope.Mock.csproj --verbosity normal
+      run: dotnet pack ./src/PolicyScope/Pekspro.PolicyScope.Mock/Pekspro.PolicyScope.Mock.csproj --verbosity normal
