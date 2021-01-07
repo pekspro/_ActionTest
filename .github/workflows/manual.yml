@@ -54,7 +54,7 @@ jobs:
         dotnet-version: 3.1.302
         source-url: https://nuget.pkg.github.com/pekspro/index.json  
       env:
-        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        NUGET_AUTH_TOKEN: ${{secrets.RespSecret1}}
 
     - name: Restore dependencies
       run: dotnet restore ./src/PolicyScope/Pekspro.PolicyScope/Pekspro.PolicyScope.csproj
