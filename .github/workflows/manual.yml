@@ -10,9 +10,9 @@ on:
     inputs:
       name:
         # Friendly description to be shown in the UI instead of 'name'
-        description: 'Person to greet'
+        pushToNuget: 'Push to NuGet'
         # Default value if no value is explicitly provided
-        default: 'World'
+        default: '0'
         # Input has to be provided for the workflow to run
         required: true
 
@@ -27,4 +27,11 @@ jobs:
     steps:
     # Runs a single command using the runners shell
     - name: Send greeting
-      run: echo "Hello ${{ github.event.inputs.name }}"
+      run: echo "Hello ${{ github.event.inputs.pushToNuget }}"
+    - name: Not pushing
+      if: github.event.inputs.pushToNuget != "1"
+      run: echo "Will not push to NuGet"
+    - name: Pushing
+      if: github.event.inputs.pushToNuget == "1"
+      run: echo "Will push to NuGet"
+  
