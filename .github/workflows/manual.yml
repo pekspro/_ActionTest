@@ -29,9 +29,9 @@ jobs:
     - name: Send greeting
       run: echo "Hello ${{ github.event.inputs.pushToNuget }}"
     - name: Not pushing
-      if: github.event.inputs.pushToNuget != "1"
+      if: github.event.inputs.pushToNuget != '1'
       run: echo "Will not push to NuGet"
     - name: Pushing
-      if: github.event.inputs.pushToNuget == "1"
+      if: github.event.inputs.pushToNuget == '1'
       run: echo "Will push to NuGet"
   
