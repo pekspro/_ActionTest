@@ -32,7 +32,32 @@ jobs:
       run: echo "Will not push to NuGet"
     - name: Pushing
       if: github.event.inputs.pushToNuget == '1'
-      run: echo "Will push to NuGet"
+      run: echo "Will push to NuGet"'
+  
+    - uses: actions/checkout@v2
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.302
+
+    - name: Restore dependencies
+      run: dotnet restore ./src/PolicyScope/Pekspro.PolicyScope/Pekspro.PolicyScope.csproj
+
+    - name: Build
+      run: dotnet build ./src/PolicyScope/Pekspro.PolicyScope/Pekspro.PolicyScope.csproj --no-restore --configuration Release
+
+    - name: Pack PolicyScope
+      run: dotnet pack ./src/PolicyScope/Pekspro.PolicyScope/Pekspro.PolicyScope.csproj --verbosity normal --configuration Release --include-symbols -p:GITHUB_ACTIONS=true
+          
+    - name: Upload artifacts
+      if: github.event.inputs.pushToNuget == '1'
+      uses: actions/upload-artifact@v2
+      with:
+        name: NuGet-packages
+        path: |
+          ./**/*.nupkg
+          ./**/*.snupkg
   
   publish:
     needs: [build]
@@ -46,3 +71,11 @@ jobs:
     - name: Pushing 2      
       run: echo "Will push to NuGet 2"
   
+    - name: Upload artifacts
+      if: github.event.inputs.pushToNuget == '1'
+      uses: actions/upload-artifact@v2
+      with:
+        name: NuGet-packages
+        path: |
+          ./**/*.nupkg
+          ./**/*.snupkg
