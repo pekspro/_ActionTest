@@ -12,14 +12,14 @@
     <RepositoryUrl>https://github.com/pekspro/PolicyScope</RepositoryUrl>
     <PackageTags>Polly</PackageTags>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <Configurations>Debug;Release;DebugLocalLinking</Configurations>
+    <Configurations>Debug;Release;DebugLocalReferences</Configurations>
   </PropertyGroup>
 
-  <ItemGroup Condition=" '$(Configuration)' == 'DebugLocalLinking' ">
+  <ItemGroup Condition=" '$(Configuration)' == 'DebugLocalReferences' ">
     <ProjectReference Include="..\Pekspro.PolicyScope\Pekspro.PolicyScope.csproj" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(Configuration)' != 'DebugLocalLinking' ">
+  <ItemGroup Condition=" '$(Configuration)' != 'DebugLocalReferences' ">
     <PackageReference Include="Pekspro.PolicyScope" Version="0.0.2" />
   </ItemGroup>
   

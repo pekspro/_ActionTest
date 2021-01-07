@@ -5,7 +5,7 @@
 
     <IsPackable>false</IsPackable>
 
-    <Configurations>Debug;Release;DebugLocalLinking</Configurations>
+    <Configurations>Debug;Release;DebugLocalReferences</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,12 +27,12 @@
     <ProjectReference Include="..\Pekspro.PolicyScope.LogicTest\Pekspro.PolicyScope.LogicTest.csproj" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(Configuration)' == 'DebugLocalLinking' ">
+  <ItemGroup Condition=" '$(Configuration)' == 'DebugLocalReferences' ">
     <ProjectReference Include="..\Pekspro.PolicyScope\Pekspro.PolicyScope.csproj" />
     <ProjectReference Include="..\Pekspro.PolicyScope.Mock\Pekspro.PolicyScope.Mock.csproj" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(Configuration)' != 'DebugLocalLinking' ">
+  <ItemGroup Condition=" '$(Configuration)' != 'DebugLocalReferences' ">
     <PackageReference Include="Pekspro.PolicyScope" Version="0.0.2" />
     <PackageReference Include="Pekspro.PolicyScope.Mock" Version="0.0.2" />
   </ItemGroup>
