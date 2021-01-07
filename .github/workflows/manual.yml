@@ -40,6 +40,8 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.302
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.NUGETAPIKEY}}
 
     - name: Restore dependencies
       run: dotnet restore ./src/PolicyScope/Pekspro.PolicyScope/Pekspro.PolicyScope.csproj
@@ -61,6 +63,4 @@ jobs:
     - name: Pushing to NuGet.org
       if: github.event.inputs.pushToNuget == '1'
       run: dotnet nuget push ./src/PolicyScope/Pekspro.PolicyScope/bin/Release/*.nupkg --source https://api.nuget.org/v3/index.json
-      env:
-        NUGET_AUTH_TOKEN: ${{secrets.NUGETAPIKEY}}
  
