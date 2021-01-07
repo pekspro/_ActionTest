@@ -75,5 +75,5 @@ jobs:
           
     - name: Pushing to NuGet.org
       if: github.event.inputs.pushToNuget == '1'
-      run: dotnet nuget push ./src/PolicyScope/Pekspro.PolicyScope/bin/Release/*.nupkg --source https://api.nuget.org/v3/index.json
+      run: dotnet nuget push ./src/PolicyScope/Pekspro.PolicyScope/bin/Release/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_API_KEY}}
  
