@@ -8,7 +8,9 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: |
+      ubuntu-latest
+      windows-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -67,10 +69,10 @@ jobs:
         dotnet-version: 3.1.302
 
     - name: Restore dependencies
-      run: dotnet restore ./src/PolicyScope/Pekspro.PolicyScope/Pekspro.PolicyScope.Mock.csproj
+      run: dotnet restore ./src/PolicyScope/Pekspro.PolicyScope.Mock/Pekspro.PolicyScope.Mock.csproj
 
     - name: Build
-      run: dotnet build ./src/PolicyScope/Pekspro.PolicyScope/Pekspro.PolicyScope.Mock.csproj --no-restore --configuration Release
+      run: dotnet build ./src/PolicyScope/Pekspro.PolicyScope.Mock/Pekspro.PolicyScope.Mock.csproj --no-restore --configuration Release
 
     - name: Pack PolicyScope.Mock
       run: dotnet pack ./src/PolicyScope/Pekspro.PolicyScope.Mock/Pekspro.PolicyScope.Mock.csproj --verbosity normal --configuration Release --include-symbols -p:GITHUB_ACTIONS=true
