@@ -32,7 +32,7 @@ jobs:
       run: echo "Will not push to NuGet"
     - name: Pushing
       if: github.event.inputs.pushToNuget == '1'
-      run: echo "Will push to NuGet"'
+      run: echo "Will push to NuGet"
   
     - uses: actions/checkout@v2
 
