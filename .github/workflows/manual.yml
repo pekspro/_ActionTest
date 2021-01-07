@@ -42,7 +42,7 @@ jobs:
         dotnet-version: 3.1.302
         # source-url: https://nuget.pkg.github.com/<organization>/index.json  
       env:
-        NUGET_AUTH_TOKEN: ${{secrets.NUGETAPIKEY}}
+        NUGET_AUTH_TOKEN: ${{secrets.NuGetApiKey}}
 
     - name: Restore dependencies
       run: dotnet restore ./src/PolicyScope/Pekspro.PolicyScope/Pekspro.PolicyScope.csproj
@@ -63,5 +63,5 @@ jobs:
           
     - name: Pushing to NuGet.org
       if: github.event.inputs.pushToNuget == '1'
-      run: dotnet nuget push ./src/PolicyScope/Pekspro.PolicyScope/bin/Release/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGETAPIKEY}} 
+      run: dotnet nuget push ./src/PolicyScope/Pekspro.PolicyScope/bin/Release/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NuGetApiKey}} 
  
