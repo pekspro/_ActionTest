@@ -8,9 +8,9 @@ on:
   workflow_dispatch:
     # Inputs the workflow accepts.
     inputs:
-      name:
+      pushToNuget:
         # Friendly description to be shown in the UI instead of 'name'
-        pushToNuget: 'Push to NuGet'
+        description: 'Push to NuGet'
         # Default value if no value is explicitly provided
         default: '0'
         # Input has to be provided for the workflow to run
