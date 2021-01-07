@@ -7,10 +7,8 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
-    runs-on: |
-      ubuntu-latest
-      windows-latest
+  test-windows:
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -28,6 +26,27 @@ jobs:
 
     - name: Test
       run: dotnet test ./src/ --no-build  --configuration DebugLocalReferences --verbosity normal
+
+  test-linux:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.302
+
+    - name: Restore dependencies
+      run: dotnet restore ./src/
+
+    - name: Build
+      run: dotnet build ./src/ --no-restore --configuration DebugLocalReferences
+
+    - name: Test
+      run: dotnet test ./src/ --no-build  --configuration DebugLocalReferences --verbosity normal
+
 
   create-nuget-main:
     runs-on: ubuntu-latest
