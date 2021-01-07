@@ -34,14 +34,12 @@ jobs:
       if: github.event.inputs.pushToNuget == '1'
       run: echo "Will push to NuGet"
   
-    - name: Showing secret A
     - shell: bash
       env:
         SUPER_SECRET: ${{ secrets.SECRET_NUMBER_1 }}
       run: |
         echo "$SUPER_SECRET"
   
-    - name: Showing secret B
     - shell: bash
       env:
         SUPER_SECRET: ${{ secrets.Secret_Number_2 }}
