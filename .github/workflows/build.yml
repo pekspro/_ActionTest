@@ -23,10 +23,10 @@ jobs:
       run: dotnet restore ./src/
 
     - name: Build
-      run: dotnet build ./src/ --no-restore
+      run: dotnet build ./src/ --no-restore --configuration DebugLocalReferences
 
     - name: Test
-      run: dotnet test ./src/ --no-build --verbosity normal
+      run: dotnet test ./src/ --no-build  --configuration DebugLocalReferences --verbosity normal
 
     - name: Pack PolicyScope
       run: dotnet pack ./src/PolicyScope/Pekspro.PolicyScope/Pekspro.PolicyScope.csproj --verbosity normal --configuration Release --include-symbols -p:GITHUB_ACTIONS=true
@@ -41,4 +41,3 @@ jobs:
         path: |
           ./**/*.nupkg
           ./**/*.snupkg
-
