@@ -16,7 +16,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.302
+        dotnet-version: 3.1.x
 
     - name: Restore dependencies
       run: dotnet restore ./src/
@@ -27,12 +27,9 @@ jobs:
     - name: Test
       run: dotnet test ./src/ --no-build  --configuration DebugLocalReferences --verbosity normal
 
-    - name: Change directory
-      run: cd ./src/
-
     - name: Verify codegenerator
-      working-directory: ./src
-      run: dotnet run --configuration DebugLocalReferences dotnet run --project .\PolicyScope\Pekspro.PolicyScope.CodeGenerator\Pekspro.PolicyScope.CodeGenerator.csproj
+      working-directory: ./src/PolicyScope
+      run: dotnet run --configuration DebugLocalReferences dotnet run --project ./Pekspro.PolicyScope.CodeGenerator/Pekspro.PolicyScope.CodeGenerator.csproj
 
   test-linux:
     runs-on: windows-latest
@@ -44,7 +41,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.302
+        dotnet-version: 3.1.x
 
     - name: Restore dependencies
       run: dotnet restore ./src/
