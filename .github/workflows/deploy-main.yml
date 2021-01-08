@@ -41,18 +41,7 @@ jobs:
           ./**/*.nupkg
           ./**/*.snupkg
           
-#    - name: Pushing to NuGet.org
-#      if: github.event.inputs.pushToNuget == '1'
-#      run: dotnet nuget push ./src/PolicyScope/Pekspro.PolicyScope/bin/Release/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_API_KEY}}
- 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 3.1.x
-        source-url: https://api.nuget.org/v3/index.json
-      env:
-        NUGET_AUTH_TOKEN: ${{secrets.NUGET_API_KEY}}
-
     - name: Pushing to NuGet.org
       if: github.event.inputs.pushToNuget == '1'
-      run: dotnet nuget push ./src/PolicyScope/Pekspro.PolicyScope/bin/Release/*.nupkg
+      run: dotnet nuget push ./src/PolicyScope/Pekspro.PolicyScope/bin/Release/*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_API_KEY}}
+
