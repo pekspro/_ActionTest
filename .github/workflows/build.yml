@@ -1,4 +1,4 @@
-name: .NET
+name: Build and test
 
 on:
   push:
@@ -27,8 +27,15 @@ jobs:
     - name: Test
       run: dotnet test ./src/ --no-build  --configuration DebugLocalReferences --verbosity normal
 
+    - name: Change directory
+      run: cd ./src/
+
+    - name: Test
+      run: dotnet run --configuration DebugLocalReferences dotnet run --project .\PolicyScope\Pekspro.PolicyScope.CodeGenerator\Pekspro.PolicyScope.CodeGenerator.csproj
+
   test-linux:
     runs-on: windows-latest
+    if: false == true
 
     steps:
     - uses: actions/checkout@v2
@@ -46,62 +53,3 @@ jobs:
 
     - name: Test
       run: dotnet test ./src/ --no-build  --configuration DebugLocalReferences --verbosity normal
-
-
-  create-nuget-main:
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
-
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 3.1.302
-
-    - name: Restore dependencies
-      run: dotnet restore ./src/PolicyScope/Pekspro.PolicyScope/Pekspro.PolicyScope.csproj
-
-    - name: Build
-      run: dotnet build ./src/PolicyScope/Pekspro.PolicyScope/Pekspro.PolicyScope.csproj --no-restore --configuration Release
-
-    - name: Pack PolicyScope
-      run: dotnet pack ./src/PolicyScope/Pekspro.PolicyScope/Pekspro.PolicyScope.csproj --verbosity normal --configuration Release --include-symbols -p:GITHUB_ACTIONS=true
-          
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: NuGet-packages
-        path: |
-          ./**/*.nupkg
-          ./**/*.snupkg
-
-  create-nuget-mock:
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
-
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 3.1.302
-
-    - name: Restore dependencies
-      run: dotnet restore ./src/PolicyScope/Pekspro.PolicyScope.Mock/Pekspro.PolicyScope.Mock.csproj
-
-    - name: Build
-      run: dotnet build ./src/PolicyScope/Pekspro.PolicyScope.Mock/Pekspro.PolicyScope.Mock.csproj --no-restore --configuration Release
-
-    - name: Pack PolicyScope.Mock
-      run: dotnet pack ./src/PolicyScope/Pekspro.PolicyScope.Mock/Pekspro.PolicyScope.Mock.csproj --verbosity normal --configuration Release --include-symbols -p:GITHUB_ACTIONS=true
-    
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: NuGet-packages
-        path: |
-          ./**/*.nupkg
-          ./**/*.snupkg
