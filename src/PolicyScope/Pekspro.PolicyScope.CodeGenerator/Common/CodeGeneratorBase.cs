@@ -78,7 +78,7 @@ namespace Pekspro.PolicyScope.CodeGenerator.Common
             Console.Write($"Updating {path}... ");
 
             string currentContent = System.IO.File.ReadAllText(path);
-            if(currentContent.Replace("\r\n", "\n") == fileContent.Replace("\r\n", "\n"))
+            if(currentContent == fileContent)
             {
                 Console.WriteLine("File already up to date.");
                 return false;
@@ -87,8 +87,6 @@ namespace Pekspro.PolicyScope.CodeGenerator.Common
             {
                 System.IO.File.WriteAllText(path, fileContent, Encoding.UTF8);
                 Console.WriteLine("File updated.");
-                Console.WriteLine("Old:" + currentContent);
-                Console.WriteLine("New:" + fileContent);
                 return true;
             }
         }
