@@ -1,0 +1,47 @@
+name: Deploy Main
+
+on:
+  workflow_dispatch:
+    inputs:
+      pushToNuget:
+        description: 'Push to NuGet'
+        default: '0'
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - uses: actions/checkout@v2
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      # with:
+      #   dotnet-version: 3.1.x
+      #   source-url: https://api.nuget.org/v3/index.json  
+      # env:
+      #   NUGET_AUTH_TOKEN: ${{secrets.NUGET_API_KEY}}
+
+    - name: Restore dependencies
+      run: dotnet restore ./src/PolicyScope/Pekspro.PolicyScope/Pekspro.PolicyScope.csproj
+
+    - name: Build
+      run: dotnet build ./src/PolicyScope/Pekspro.PolicyScope/Pekspro.PolicyScope.csproj --no-restore --configuration Release
+
+    - name: Pack PolicyScope
+      run: dotnet pack ./src/PolicyScope/Pekspro.PolicyScope/Pekspro.PolicyScope.csproj --verbosity normal --configuration Release --include-symbols -p:GITHUB_ACTIONS=true
+          
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: NuGet-packages
+        path: |
+          ./**/*.nupkg
+          ./**/*.snupkg
+          
+    - name: Pushing to NuGet.org
+      if: github.event.inputs.pushToNuget == '1'
+      run: dotnet nuget push ./src/PolicyScope/Pekspro.PolicyScope/bin/Release/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_API_KEY}}
+ 

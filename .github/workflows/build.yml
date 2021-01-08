@@ -9,7 +9,6 @@ on:
 jobs:
   test-windows:
     runs-on: windows-latest
-    if: false == true
     
     steps:
     - uses: actions/checkout@v2
