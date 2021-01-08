@@ -9,7 +9,6 @@ on:
 jobs:
   test-windows:
     runs-on: windows-latest
-    if: false == true
     
     steps:
     - uses: actions/checkout@v2
@@ -29,11 +28,11 @@ jobs:
       run: dotnet test ./src/ --no-build  --configuration DebugLocalReferences --verbosity normal
 
     - name: Verify codegenerator
-      working-directory: ./src/PolicyScope
-      run: dotnet run --configuration DebugLocalReferences dotnet run --project ./Pekspro.PolicyScope.CodeGenerator/Pekspro.PolicyScope.CodeGenerator.csproj --configuration DebugLocalReferences
+      run: dotnet run --configuration DebugLocalReferences dotnet run --configuration DebugLocalReferences --project ./src/PolicyScope/Pekspro.PolicyScope.CodeGenerator/Pekspro.PolicyScope.CodeGenerator.csproj ./src/
 
   test-linux:
     runs-on: ubuntu-latest
+    if: false == true
 
     steps:
     - uses: actions/checkout@v2
