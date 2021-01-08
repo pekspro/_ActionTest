@@ -87,6 +87,8 @@ namespace Pekspro.PolicyScope.CodeGenerator.Common
             {
                 System.IO.File.WriteAllText(path, fileContent, Encoding.UTF8);
                 Console.WriteLine("File updated.");
+                Console.WriteLine("Old:" + currentContent);
+                Console.WriteLine("New:" + fileContent);
                 return true;
             }
         }
