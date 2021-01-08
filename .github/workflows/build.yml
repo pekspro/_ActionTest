@@ -1,4 +1,4 @@
-name: .NET
+name: Build and test
 
 on:
   push:
@@ -7,17 +7,17 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
+  test-windows:
+    runs-on: windows-latest
+    if: false == true
+    
     steps:
     - uses: actions/checkout@v2
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.302
+        dotnet-version: 3.1.x
 
     - name: Restore dependencies
       run: dotnet restore ./src/
@@ -28,16 +28,30 @@ jobs:
     - name: Test
       run: dotnet test ./src/ --no-build  --configuration DebugLocalReferences --verbosity normal
 
-    - name: Pack PolicyScope
-      run: dotnet pack ./src/PolicyScope/Pekspro.PolicyScope/Pekspro.PolicyScope.csproj --verbosity normal --configuration Release --include-symbols -p:GITHUB_ACTIONS=true
-      
-    - name: Pack PolicyScope.Mock
-      run: dotnet pack ./src/PolicyScope/Pekspro.PolicyScope.Mock/Pekspro.PolicyScope.Mock.csproj --verbosity normal --configuration Release --include-symbols -p:GITHUB_ACTIONS=true
-    
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v2
+    - name: Verify codegenerator
+      working-directory: ./src/PolicyScope
+      run: dotnet run --configuration DebugLocalReferences dotnet run --project ./Pekspro.PolicyScope.CodeGenerator/Pekspro.PolicyScope.CodeGenerator.csproj --configuration DebugLocalReferences
+
+  test-linux:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
       with:
-        name: NuGet-packages
-        path: |
-          ./**/*.nupkg
-          ./**/*.snupkg
+        dotnet-version: 3.1.x
+
+    - name: Restore dependencies
+      run: dotnet restore ./src/
+
+    - name: Build
+      run: dotnet build ./src/ --no-restore --configuration DebugLocalReferences
+
+    - name: Test
+      run: dotnet test ./src/ --no-build --configuration DebugLocalReferences --verbosity normal
+
+    - name: Verify codegenerator
+      working-directory: ./src/PolicyScope
+      run: dotnet run --configuration DebugLocalReferences dotnet run --project ./Pekspro.PolicyScope.CodeGenerator/Pekspro.PolicyScope.CodeGenerator.csproj --configuration DebugLocalReferences 
