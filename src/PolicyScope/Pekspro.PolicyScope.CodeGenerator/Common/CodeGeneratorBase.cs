@@ -78,7 +78,7 @@ namespace Pekspro.PolicyScope.CodeGenerator.Common
             Console.Write($"Updating {path}... ");
 
             string currentContent = System.IO.File.ReadAllText(path);
-            if(currentContent == fileContent)
+            if(currentContent.Replace("\r\n", "\n") == fileContent.Replace("\r\n", "\n"))
             {
                 Console.WriteLine("File already up to date.");
                 return false;
