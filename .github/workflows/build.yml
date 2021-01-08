@@ -31,7 +31,8 @@ jobs:
       run: cd ./src/
 
     - name: Verify codegenerator
-      run: dotnet run --configuration DebugLocalReferences dotnet run --project .\src\PolicyScope\Pekspro.PolicyScope.CodeGenerator\Pekspro.PolicyScope.CodeGenerator.csproj
+      working-directory: ./src
+      run: dotnet run --configuration DebugLocalReferences dotnet run --project .\PolicyScope\Pekspro.PolicyScope.CodeGenerator\Pekspro.PolicyScope.CodeGenerator.csproj
 
   test-linux:
     runs-on: windows-latest
