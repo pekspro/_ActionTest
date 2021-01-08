@@ -71,8 +71,6 @@ namespace Pekspro.PolicyScope.LogicTest
                 }
             }
 
-            sb.Remove(sb.Length - 2, 2);
-
             sb.AppendLine(
 @"            }
 

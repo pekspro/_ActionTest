@@ -48,8 +48,6 @@ namespace Pekspro.PolicyScope.Mock
                 }
             }
 
-            sb.Remove(sb.Length - 2, 2);
-
             sb.AppendLine(@"}");
 
             return sb.ToString();

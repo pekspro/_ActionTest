@@ -39,8 +39,6 @@ namespace Pekspro.PolicyScope
                 sb.AppendLine(CreateClassCode(new CodeNames(0, false, asyncMode == 0), maxServiceCount));
             }
 
-            sb.Remove(sb.Length - 2, 2);
-
             sb.AppendLine(@"}");
 
             return sb.ToString();
@@ -104,8 +102,6 @@ $@"    }}");
             {
                 sb.AppendLine(CreateInterfaceCode(new CodeNames(0, false, asyncMode == 0), maxServiceCount));
             }
-
-            sb.Remove(sb.Length - 2, 2);
 
             sb.AppendLine(@"}");
 

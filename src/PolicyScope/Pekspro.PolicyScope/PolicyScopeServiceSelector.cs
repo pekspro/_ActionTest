@@ -71,4 +71,5 @@ namespace Pekspro.PolicyScope
             return new SyncPolicyScopeResultSelector<T1, T2, T3, T4>(this);
         }
     }
+
 }

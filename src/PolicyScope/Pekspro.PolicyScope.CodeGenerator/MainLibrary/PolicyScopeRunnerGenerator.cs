@@ -52,8 +52,6 @@ namespace Pekspro.PolicyScope
                 }
             }
 
-            sb.Remove(sb.Length - 2, 2);
-
             sb.AppendLine(@"}");
 
             return sb.ToString();
@@ -191,8 +189,6 @@ namespace Pekspro.PolicyScope
                     }
                 }
             }
-
-            sb.Remove(sb.Length - 2, 2);
 
             sb.AppendLine(@"}");
 

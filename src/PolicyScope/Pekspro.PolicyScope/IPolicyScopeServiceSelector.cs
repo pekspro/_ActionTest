@@ -28,4 +28,5 @@ namespace Pekspro.PolicyScope
 
         ISyncPolicyScopeResultSelector<T1, T2, T3, T4> WithServices<T1, T2, T3, T4>();
     }
+
 }

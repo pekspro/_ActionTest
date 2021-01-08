@@ -89,6 +89,7 @@ namespace Pekspro.PolicyScope.LogicTest
 
                 Console.WriteLine($"Running {nameof(logic.RunWithResult4Service)}...");
                 logic.RunWithResult4Service();
+
             }
 
             Console.WriteLine();

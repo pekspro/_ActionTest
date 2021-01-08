@@ -622,5 +622,6 @@ namespace Pekspro.PolicyScope.Test.LogicTest.Workers
             Assert.Equal((1 << 4) - 1, logic.LatestResult);
             policyScopeMock.VerifyRunOnce();
         }
+
     }
 }

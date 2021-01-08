@@ -612,5 +612,6 @@ namespace Pekspro.PolicyScope.Test.Mock
                 int result = logic.RunWithResult4Service();
             });
         }
+
     }
 }

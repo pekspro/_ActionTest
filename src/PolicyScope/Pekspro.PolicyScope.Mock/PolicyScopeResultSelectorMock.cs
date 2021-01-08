@@ -345,4 +345,5 @@ namespace Pekspro.PolicyScope.Mock
             return new SyncServiceResultPolicyScopeRunnerMock<T1, T2, T3, T4, TResult>(config);
         }
     }
+
 }

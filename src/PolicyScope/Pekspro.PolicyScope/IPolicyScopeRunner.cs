@@ -105,4 +105,5 @@ namespace Pekspro.PolicyScope
     {
         TResult Run(Func<T1, T2, T3, T4, TResult> func);
     }
+
 }

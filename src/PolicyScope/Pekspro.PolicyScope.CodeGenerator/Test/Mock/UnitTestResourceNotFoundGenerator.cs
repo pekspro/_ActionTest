@@ -53,8 +53,6 @@ namespace Pekspro.PolicyScope.Test.Mock
                 }
             }
 
-            sb.Remove(sb.Length - 2, 2);
-
             sb.AppendLine(@"    }
 }");
 

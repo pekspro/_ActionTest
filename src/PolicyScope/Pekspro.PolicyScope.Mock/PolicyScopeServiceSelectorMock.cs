@@ -226,4 +226,5 @@ namespace Pekspro.PolicyScope.Mock
             return new SyncPolicyScopeResultSelectorMock<T1, T2, T3, T4>(configurations);
         }
     }
+
 }

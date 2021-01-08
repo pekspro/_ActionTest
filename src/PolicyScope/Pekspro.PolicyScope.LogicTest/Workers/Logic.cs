@@ -358,5 +358,6 @@ namespace Pekspro.PolicyScope.LogicTest.Workers
                     return LatestResult;
                 });
         }
+
     }
 }

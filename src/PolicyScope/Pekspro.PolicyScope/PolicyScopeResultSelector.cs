@@ -182,4 +182,5 @@ namespace Pekspro.PolicyScope
             return new SyncServiceResultPolicyScopeRunner<T1, T2, T3, T4, TResult>(this);
         }
     }
+
 }

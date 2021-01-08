@@ -43,8 +43,6 @@ namespace Pekspro.PolicyScope.CodeGenerator.MainLibrary
                 }
             }
 
-            sb.Remove(sb.Length - 2, 2);
-
             sb.AppendLine(@"}");
 
             return sb.ToString();
@@ -105,8 +103,6 @@ $@"    }}");
                     sb.AppendLine(CreateInterfaceCode(new CodeNames(serviceCount, false, asyncMode == 0)));
                 }
             }
-
-            sb.Remove(sb.Length - 2, 2);
 
             sb.AppendLine(@"}");
 

@@ -46,5 +46,6 @@ namespace Pekspro.PolicyScope.LogicTest.Workers
         public int RunWithResult3Service();
 
         public int RunWithResult4Service();
+
     }
 }

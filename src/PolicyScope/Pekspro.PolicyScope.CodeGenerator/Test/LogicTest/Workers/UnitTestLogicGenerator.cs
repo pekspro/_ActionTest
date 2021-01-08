@@ -57,8 +57,6 @@ namespace Pekspro.PolicyScope.Test.LogicTest.Workers
                 }
             }
 
-            sb.Remove(sb.Length - 2, 2);
-
             sb.AppendLine(@"    }
 }");
 
