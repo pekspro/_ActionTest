@@ -22,11 +22,11 @@ namespace Pekspro.PolicyScope.CodeGenerator.MainLibrary
             return name;
         }
 
-        public override void WriteClassFileContent(int maxServiceCount)
+        public override bool WriteClassFileContent(int maxServiceCount)
         {
             string fileContent = CreateClassFileContent(maxServiceCount);
 
-            WriteFileContent("Pekspro.PolicyScope/PolicyScopeResultSelector.cs", fileContent);
+            return WriteFileContent("Pekspro.PolicyScope/PolicyScopeResultSelector.cs", fileContent);
         }
 
         public string CreateClassFileContent(int maxServiceCount)
@@ -85,11 +85,11 @@ $@"    }}");
         }
 
 
-        public override void WriteInterfaceFileContent(int maxServiceCount)
+        public override bool WriteInterfaceFileContent(int maxServiceCount)
         {
             string fileContent = CreateInterfaceFileContent(maxServiceCount);
 
-            WriteFileContent("Pekspro.PolicyScope/IPolicyScopeResultSelector.cs", fileContent);
+            return WriteFileContent("Pekspro.PolicyScope/IPolicyScopeResultSelector.cs", fileContent);
         }
 
         public string CreateInterfaceFileContent(int maxServiceCount)

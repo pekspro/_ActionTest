@@ -10,71 +10,78 @@ namespace Pekspro.PolicyScope.CodeGenerator
 {
     class Program
     {
-        static void Main(string[] args)
+        static int Main(string[] args)
         {
             int maxServiceCount = 4;
 
+            int fileUpdateCount = 0;
             Console.WriteLine("Autogenerating code for main library...");
 
             PolicyScopeResultSelectorGenerator servicePolicyScopeBuilderGenerator
                 = new PolicyScopeResultSelectorGenerator();
-            servicePolicyScopeBuilderGenerator.WriteAllFiles(maxServiceCount);
+            fileUpdateCount += servicePolicyScopeBuilderGenerator.WriteAllFiles(maxServiceCount);
 
             PolicyScopeRunnerGenerator policyRunnerGenerator 
                 = new PolicyScopeRunnerGenerator();
-            policyRunnerGenerator.WriteAllFiles(maxServiceCount);
+            fileUpdateCount += policyRunnerGenerator.WriteAllFiles(maxServiceCount);
 
             PolicyScopeServiceSelectorGenerator policyScopeServiceSelectorGenerator =
                 new PolicyScopeServiceSelectorGenerator();
-            policyScopeServiceSelectorGenerator.WriteAllFiles(maxServiceCount);
+            fileUpdateCount += policyScopeServiceSelectorGenerator.WriteAllFiles(maxServiceCount);
 
+            Console.WriteLine();
             Console.WriteLine("Autogenerating code for mock library...");
 
             PolicyScopeResultSelectorMockBuilderGenerator policyScopeResultSelectorMockBuilderGenerator = 
                 new PolicyScopeResultSelectorMockBuilderGenerator();
-            policyScopeResultSelectorMockBuilderGenerator.WriteAllFiles(maxServiceCount);
+            fileUpdateCount += policyScopeResultSelectorMockBuilderGenerator.WriteAllFiles(maxServiceCount);
 
             PolicyScopeResultSelectorMockGenerator policyScopeResultSelectorMockGenerator = 
                 new PolicyScopeResultSelectorMockGenerator();
-            policyScopeResultSelectorMockGenerator.WriteAllFiles(maxServiceCount);
+            fileUpdateCount += policyScopeResultSelectorMockGenerator.WriteAllFiles(maxServiceCount);
 
             PolicyScopeRunnerMockGenerator policyScopeRunnerMockGenerator 
                 = new PolicyScopeRunnerMockGenerator();
-            policyScopeRunnerMockGenerator.WriteAllFiles(maxServiceCount);
+            fileUpdateCount += policyScopeRunnerMockGenerator.WriteAllFiles(maxServiceCount);
 
             PolicyScopeServiceSelectorMockBuilderGenerator policyScopeServiceSelectorMockBuilderGenerator =
                 new PolicyScopeServiceSelectorMockBuilderGenerator();
-            policyScopeServiceSelectorMockBuilderGenerator.WriteAllFiles(maxServiceCount);
+            fileUpdateCount += policyScopeServiceSelectorMockBuilderGenerator.WriteAllFiles(maxServiceCount);
 
             PolicyScopeServiceSelectorMockGenerator policyScopeServiceSelectorMockGenerator = 
                 new PolicyScopeServiceSelectorMockGenerator();
-            policyScopeServiceSelectorMockGenerator.WriteAllFiles(maxServiceCount);
+            fileUpdateCount += policyScopeServiceSelectorMockGenerator.WriteAllFiles(maxServiceCount);
 
+            Console.WriteLine(); 
             Console.WriteLine("Autogenerating code for logic test...");
 
             LogicGenerator logicGenerator =
                 new LogicGenerator();
-            logicGenerator.WriteAllFiles(maxServiceCount);
+            fileUpdateCount += logicGenerator.WriteAllFiles(maxServiceCount);
 
             WorkerGenerator workerGenerator = 
                 new WorkerGenerator();
-            workerGenerator.WriteAllFiles(maxServiceCount);
+            fileUpdateCount += workerGenerator.WriteAllFiles(maxServiceCount);
 
+            Console.WriteLine(); 
             Console.WriteLine("Autogenerating code for test...");
 
             UnitTestLogicGenerator unitTestLogicGenerator =
                 new UnitTestLogicGenerator();
-            unitTestLogicGenerator.WriteAllFiles(maxServiceCount);
+            fileUpdateCount += unitTestLogicGenerator.WriteAllFiles(maxServiceCount);
 
             UnitTestResourceNotFoundGenerator unitTestResourceNotFoundGenerator =
                 new UnitTestResourceNotFoundGenerator();
-            unitTestResourceNotFoundGenerator.WriteAllFiles(maxServiceCount);
+            fileUpdateCount += unitTestResourceNotFoundGenerator.WriteAllFiles(maxServiceCount);
 
             UnitTestServiceNotFoundGenerator unitTestServiceNotFoundGenerator = 
                 new UnitTestServiceNotFoundGenerator();
-            unitTestServiceNotFoundGenerator.WriteAllFiles(maxServiceCount);
+            fileUpdateCount += unitTestServiceNotFoundGenerator.WriteAllFiles(maxServiceCount);
 
-            Console.WriteLine("Autogenerating completed.");
+            Console.WriteLine(); 
+            Console.WriteLine($"Autogenerating completed. {fileUpdateCount} files updated.");
+
+            return fileUpdateCount;
         }
     }
 }

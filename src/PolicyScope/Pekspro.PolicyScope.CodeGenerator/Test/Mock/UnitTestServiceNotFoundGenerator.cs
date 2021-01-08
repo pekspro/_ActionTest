@@ -19,11 +19,11 @@ namespace Pekspro.PolicyScope.CodeGenerator.Test.Mock
             return "UnitTestServiceNotFound";
         }
 
-        public override void WriteClassFileContent(int maxServiceCount)
+        public override bool WriteClassFileContent(int maxServiceCount)
         {
             string fileContent = CreateClassFileContent(maxServiceCount);
 
-            WriteFileContent("Pekspro.PolicyScope.Test/Mock/UnitTestServiceNotFound.cs", fileContent);
+            return WriteFileContent("Pekspro.PolicyScope.Test/Mock/UnitTestServiceNotFound.cs", fileContent);
         }
 
         public string CreateClassFileContent(int maxServiceCount)

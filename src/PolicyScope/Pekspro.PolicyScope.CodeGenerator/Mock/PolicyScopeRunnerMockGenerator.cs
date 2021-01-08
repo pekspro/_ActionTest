@@ -21,11 +21,11 @@ namespace Pekspro.PolicyScope.CodeGenerator.Mock
             return policyScopeRunnerGenerator.GetClassName(codeNames) + "Mock";
         }
 
-        public override void WriteClassFileContent(int maxServiceCount)
+        public override bool WriteClassFileContent(int maxServiceCount)
         {
             string fileContent = CreateClassFileContent(maxServiceCount);
 
-            WriteFileContent("Pekspro.PolicyScope.Mock/PolicyScopeRunnerMock.cs", fileContent);
+            return WriteFileContent("Pekspro.PolicyScope.Mock/PolicyScopeRunnerMock.cs", fileContent);
         }
 
         public string CreateClassFileContent(int maxServiceCount)

@@ -17,11 +17,11 @@ namespace Pekspro.PolicyScope.CodeGenerator.LogicTest
             return "Worker";
         }
 
-        public override void WriteClassFileContent(int maxServiceCount)
+        public override bool WriteClassFileContent(int maxServiceCount)
         {
             string fileContent = CreateClassFileContent(maxServiceCount);
 
-            WriteFileContent("Pekspro.PolicyScope.LogicTest/Worker.cs", fileContent);
+            return WriteFileContent("Pekspro.PolicyScope.LogicTest/Worker.cs", fileContent);
         }
 
         public string CreateClassFileContent(int maxServiceCount)
