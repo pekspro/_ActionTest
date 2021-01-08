@@ -39,7 +39,7 @@ namespace Pekspro.PolicyScope.CodeGenerator.Common
             return false;
         }
 
-        static string BaseDirectory = null;
+        public static string BaseDirectory = null;
 
         private static string GetBaseDirectory()
         {

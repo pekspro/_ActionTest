@@ -14,6 +14,11 @@ namespace Pekspro.PolicyScope.CodeGenerator
         {
             int maxServiceCount = 4;
 
+            if(args.Length >= 1)
+            {
+                Common.CodeGeneratorBase.BaseDirectory = args[0];
+            }
+
             int fileUpdateCount = 0;
             Console.WriteLine("Autogenerating code for main library...");
 
