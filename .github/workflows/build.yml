@@ -52,5 +52,11 @@ jobs:
     - name: Test
       run: dotnet test ./src/ --no-build --configuration DebugLocalReferences --verbosity normal
 
+    - name: pwd
+      run: pwd
+
+    - name: dir
+      run: dir
+
     - name: Verify codegenerator
-      run: dotnet run --configuration DebugLocalReferences dotnet run --configuration DebugLocalReferences --project ./src/PolicyScope/Pekspro.PolicyScope.CodeGenerator/Pekspro.PolicyScope.CodeGenerator.csproj ../src/PolicyScope/
+      run: dotnet run --configuration DebugLocalReferences dotnet run --configuration DebugLocalReferences --project ./src/PolicyScope/Pekspro.PolicyScope.CodeGenerator/Pekspro.PolicyScope.CodeGenerator.csproj ../../src/PolicyScope/
